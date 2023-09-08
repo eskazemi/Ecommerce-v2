@@ -5,11 +5,11 @@
 
 ## Acknowledgements
 
- - [Django](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
- - [DRF](https://github.com/matiassingers/awesome-readme)
- - [PostgreSQL](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
-- [Pytest](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
-- [swaager](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
+ - [Django](https://www.djangoproject.com/)
+ - [DRF](https://www.django-rest-framework.org/)
+ - [PostgreSQL](https://www.postgresql.org/)
+- [Pytest](https://docs.pytest.org/en/7.4.x/)
+- [swaager](https://swagger.io/)
 
 
 ## Authors
