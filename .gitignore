@@ -16,6 +16,7 @@ neoflix/
 .env.dev
 .idea/
 settings.ini
+pytest.ini
 
 
 demm/
