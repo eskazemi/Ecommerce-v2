@@ -10,6 +10,7 @@
 - [Pytest](https://docs.pytest.org/en/7.4.x/)
 - [pytest-django](https://pytest-django.readthedocs.io/en/latest/)
 - [python-decouple](https://pypi.org/project/python-decouple/)
+- [flake8](https://flake8.pycqa.org/en/latest/)
 - [swaager](https://swagger.io/)
 
 ## command
@@ -17,6 +18,7 @@
 - pip install -r requirements.txt
 - touch settings.ini (linux)
 - touch pytest.ini (linux)
+- python manage.py migrate
 - python manage.py runserver
 
 ## configuration settings.ini
