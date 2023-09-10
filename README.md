@@ -11,7 +11,11 @@
 - [pytest-django](https://pytest-django.readthedocs.io/en/latest/)
 - [python-decouple](https://pypi.org/project/python-decouple/)
 - [flake8](https://flake8.pycqa.org/en/latest/)
-- [swaager](https://swagger.io/)
+- [django-mptt](https://django-mptt.readthedocs.io/en/latest/install.html)
+- [drf-spectacular](https://drf-spectacular.readthedocs.io/en/latest/readme.html#)
+- [coverage](https://coverage.readthedocs.io/en/7.3.1//)
+- [pytest-cov](https://pypi.org/project/pytest-cov/)
+- [pytest-factory-boy](https://pypi.org/project/pytest-factoryboy/)
 
 ## command
 - virtualenv venv
@@ -19,6 +23,7 @@
 - touch settings.ini (linux)
 - touch pytest.ini (linux)
 - python manage.py migrate
+- python manage.py spectacular --file schema.yml
 - python manage.py runserver
 
 ## configuration settings.ini
