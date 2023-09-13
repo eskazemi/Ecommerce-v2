@@ -16,6 +16,8 @@
 - [coverage](https://coverage.readthedocs.io/en/7.3.1//)
 - [pytest-cov](https://pypi.org/project/pytest-cov/)
 - [pytest-factory-boy](https://pypi.org/project/pytest-factoryboy/)
+- [sqlparse](https://pypi.org/project/sqlparse/)
+- [Pygments](https://pypi.org/project/Pygments/)
 
 ## command
 - virtualenv venv
