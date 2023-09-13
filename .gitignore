@@ -17,7 +17,7 @@ neoflix/
 .env.dev
 .idea/
 settings.ini
-pytest.ini
+setup.cfg
 schema.yml
 
 
