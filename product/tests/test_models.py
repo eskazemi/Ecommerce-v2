@@ -39,3 +39,19 @@ class TestProductLine:
         with pytest.raises(ValidationError):
             product_line_factory(order=1, product=obj)
 
+
+class TestProductImage:
+    def test_str_method(self, product_image_factory):
+        # Arrange
+        # Act
+        obj = product_image_factory(order=1)
+        # Assert
+        assert obj.__str__() == "1"
+
+    def test_duplicate_order_values(self, product_image_factory, product_line_factory, product_factory):
+        obj_product = product_factory()
+        obj_product_line = product_line_factory(order=1, product=obj_product)
+        product_image_factory(order=1, product_line=obj_product_line)
+        with pytest.raises(ValidationError):
+            product_image_factory(order=1, product_line=obj_product_line)
+

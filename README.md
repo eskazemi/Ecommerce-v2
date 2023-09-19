@@ -18,6 +18,7 @@
 - [pytest-factory-boy](https://pypi.org/project/pytest-factoryboy/)
 - [sqlparse](https://pypi.org/project/sqlparse/)
 - [Pygments](https://pypi.org/project/Pygments/)
+- [pillow](https://pypi.org/project/Pillow/)
 
 ## command
 - virtualenv venv

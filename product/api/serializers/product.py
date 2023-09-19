@@ -3,17 +3,22 @@ from product.models import (
     Product,
     ProductLine,
 )
-from .brand import BrandSerializer
-from .category import CategorySerializer
+from .image import ProductImageSerializer
 
 
 class ProductLineSerializer(serializers.ModelSerializer):
+    # backward relation
+    product_image = ProductImageSerializer(many=True)
+
     class Meta:
         model = ProductLine
-        exclude = (
-            "id",
-            "product",
-            "is_active",
+        fields = (
+            "price",
+            "sku",
+            "stock_qty",
+            'order',
+            'product_image'
+
         )
 
 
@@ -33,6 +38,3 @@ class ProductSerializer(serializers.ModelSerializer):
             "category_name",
             "brand_name"
         )
-
-
-
