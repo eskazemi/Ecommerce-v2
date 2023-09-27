@@ -1,7 +1,9 @@
 from django.db import models
 from .product import Product
+from .attribute import AttributeValue
 from product.fields import OrderField
 from django.core.exceptions import ValidationError
+from .product_type import ProductType
 
 
 class ProductLine(models.Model):
@@ -13,7 +15,16 @@ class ProductLine(models.Model):
                                 on_delete=models.CASCADE,
                                 related_name="product_line")
     is_active = models.BooleanField(default=False)
-    order = OrderField(unique_for_field="product", blank=True)
+    order = OrderField(unique_for_field="product",
+                       blank=True)
+    attribute_value = models.ManyToManyField(
+        AttributeValue,
+        related_name="product_line_attribute_value",
+        through="ProductLineAttributeValue")
+    product_type = models.ForeignKey(
+        ProductType,
+        on_delete=models.PROTECT,
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -30,3 +41,19 @@ class ProductLine(models.Model):
 
     def __str__(self):
         return self.sku
+
+
+class ProductLineAttributeValue(models.Model):
+    attribute_value = models.ForeignKey(
+        AttributeValue,
+        on_delete=models.CASCADE,
+        related_name="product_attribute_value_av",
+    )
+    product_line = models.ForeignKey(
+        ProductLine,
+        on_delete=models.CASCADE,
+        related_name="product_attribute_line_pl"
+    )
+
+    class Meta:
+        unique_together = ("attribute_value", "product_line")
