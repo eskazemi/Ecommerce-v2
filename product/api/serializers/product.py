@@ -4,11 +4,13 @@ from product.models import (
     ProductLine,
 )
 from .image import ProductImageSerializer
+from .attribute import AttributeValueSerializer
 
 
 class ProductLineSerializer(serializers.ModelSerializer):
     # backward relation
     product_image = ProductImageSerializer(many=True)
+    attribute_value = AttributeValueSerializer(many=True)
 
     class Meta:
         model = ProductLine
@@ -17,7 +19,8 @@ class ProductLineSerializer(serializers.ModelSerializer):
             "sku",
             "stock_qty",
             'order',
-            'product_image'
+            'product_image',
+            'attribute_value',
 
         )
 
