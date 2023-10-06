@@ -26,10 +26,11 @@ class TestProduct:
 
 
 class TestProductLine:
-    def test_str_method(self, product_line_factory):
+    def test_str_method(self, product_line_factory, attribute_value_factory):
         # Arrange
         # Act
-        obj = product_line_factory()
+        attr = attribute_value_factory(attribute_value="test")
+        obj = product_line_factory(attribute_value=(attr,))
         # Assert
         assert obj.__str__() == "12345"
 
@@ -37,7 +38,7 @@ class TestProductLine:
         obj = product_factory()
         product_line_factory(order=1, product=obj)
         with pytest.raises(ValidationError):
-            product_line_factory(order=1, product=obj)
+            product_line_factory(order=1, product=obj).clean()
 
 
 class TestProductImage:
@@ -55,3 +56,22 @@ class TestProductImage:
         with pytest.raises(ValidationError):
             product_image_factory(order=1, product_line=obj_product_line)
 
+
+class TestProductType:
+    def test_str_method(self, product_type_factory, attribute_factory):
+        test = attribute_factory()
+        obj = product_type_factory(name="test_type", attribute=(test,))
+        assert obj.__str__() == "test_type"
+
+
+class TestAttribute:
+    def test_str_method(self, attribute_factory):
+        obj = attribute_factory(name="test_attribute")
+        assert obj.__str__() == "test_attribute"
+
+
+class TestAttributeValue:
+    def test_str_method(self, attribute_value_factory, attribute_factory):
+        attr = attribute_factory(name="test_attribute")
+        obj = attribute_value_factory(attribute_value="test_value", attribute=attr)
+        assert obj.__str__() == "test_attribute-test_value"

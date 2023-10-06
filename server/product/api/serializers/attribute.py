@@ -8,7 +8,10 @@ from product.models import (
 class AttributeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Attribute
-        fields = ("name", )
+        fields = (
+            "name",
+            "id",
+        )
 
 
 class AttributeValueSerializer(serializers.ModelSerializer):

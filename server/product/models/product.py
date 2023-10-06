@@ -1,9 +1,7 @@
 from django.db import models
-from product.models import (
-    Brand,
-    Category,
-)
+from .brand import Brand
 from mptt.models import TreeForeignKey
+from .product_type import ProductType
 
 
 # class ActiveManager(models.Manager):
@@ -18,21 +16,28 @@ class ActiveQueryset(models.QuerySet):
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=250)
-    description = models.TextField()
-    is_digital = models.BooleanField()
-    brand = models.ForeignKey(Brand,
-                              on_delete=models.CASCADE,
-                              related_name="bproduct")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    product_type = models.ForeignKey(
+        ProductType,
+        on_delete=models.PROTECT,
+    )
     category = TreeForeignKey("Category",
                               on_delete=models.SET_NULL,
                               null=True,
                               blank=True)
+    brand = models.ForeignKey(Brand,
+                              on_delete=models.CASCADE,
+                              related_name="bproduct")
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=250)
+    description = models.TextField()
+    is_digital = models.BooleanField()
     is_active = models.BooleanField(default=False)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     objects = ActiveQueryset.as_manager()
+
     # isactive = ActiveManager()
 
     def __str__(self):
